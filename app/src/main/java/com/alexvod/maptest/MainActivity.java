@@ -432,6 +432,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        GPSAcc = 99999d;
+        NetworkAcc = 99999d;
+        NetworkLat = 0;
+        NetworkLon = 0;
+        GPSLat = 0;
+        GPSLon = 0;
         RegisterReceiviers();
         map.onResume();
         TrackerGPS = new GPSTrackerGPS(this);
@@ -442,7 +448,8 @@ public class MainActivity extends AppCompatActivity {
         TrackerNetwork.setTimeUpadates(updateTime);
         TrackerNetwork.getLocation();
 
-        txt1.setText("Resume");
+        txt1.setText("Wait");
+        updateCoord();
 
 
         //startService(new Intent(this, GPSTrackerGPS.class));
